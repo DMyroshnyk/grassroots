@@ -27,6 +27,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="grassroot" target="1.6" />
+      <module name="grassrootz" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
