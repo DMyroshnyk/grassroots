@@ -1,3 +1,5 @@
+package General;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,6 +19,7 @@ public class testgrass {
     @Test
     public void MyFirstTest (){
         WebDriver driver;
+        ConfigurationVariables config = new ConfigurationVariables();
         // declaration and instantiation of objects/variables
         //driver = new FirefoxDriver();
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
