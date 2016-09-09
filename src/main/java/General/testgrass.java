@@ -19,7 +19,6 @@ public class testgrass {
     @Test
     public void MyFirstTest (){
         WebDriver driver;
-        ConfigurationVariables config = new ConfigurationVariables();
         // declaration and instantiation of objects/variables
         //driver = new FirefoxDriver();
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
