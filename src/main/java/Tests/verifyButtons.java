@@ -35,7 +35,7 @@ public class verifyButtons extends Basic {
         //General general = new General(driver);
         //general.LoginPositive(config.login, config.password);
 
-        String parentHandle = driver.getWindowHandle(); // get the current window handle
+        String parentHandle1 = driver.getWindowHandle(); // get the current window handle
         driver.findElement(By.xpath("//span[contains(.,'Facebook')]")).click(); // click some link that opens a new window
 
         for (String winHandle : driver.getWindowHandles()) {
@@ -45,7 +45,7 @@ public class verifyButtons extends Basic {
         Assert.assertTrue (driver.findElement(By.xpath("//span[contains(.,'Share on Facebook')]")).isDisplayed()); //code to do something on new window
 
         driver.close(); // close newly opened window when done with it
-        driver.switchTo().window(parentHandle); // switch back to the original window
+        driver.switchTo().window(parentHandle1); // switch back to the original window
 
     }
 
@@ -55,7 +55,7 @@ public class verifyButtons extends Basic {
         //General general = new General(driver);
         //general.LoginPositive(config.login, config.password);
 
-        String parentHandle = driver.getWindowHandle(); // get the current window handle
+        String parentHandle2 = driver.getWindowHandle(); // get the current window handle
         driver.findElement(By.xpath("//span[contains(.,'Share')]")).click(); // click some link that opens a new window
 
         for (String winHandle : driver.getWindowHandles()) {
@@ -65,7 +65,7 @@ public class verifyButtons extends Basic {
         Assert.assertTrue (driver.findElement(By.xpath("//h1[@class='logo']")).isDisplayed()); //code to do something on new window
 
         driver.close(); // close newly opened window when done with it
-        driver.switchTo().window(parentHandle); // switch back to the original window
+        driver.switchTo().window(parentHandle2); // switch back to the original window
 
 
     }
@@ -75,7 +75,7 @@ public class verifyButtons extends Basic {
         //General general = new General(driver);
         //general.LoginPositive(config.login, config.password);
 
-        String parentHandle = driver.getWindowHandle(); // get the current window handle
+        String parentHandle3 = driver.getWindowHandle(); // get the current window handle
         driver.findElement(By.xpath("//span[contains(.,'Tweet')]")).click(); // click some link that opens a new window
 
         for (String winHandle : driver.getWindowHandles()) {
@@ -85,7 +85,7 @@ public class verifyButtons extends Basic {
         Assert.assertTrue (driver.findElement(By.xpath("//a[contains(.,'Twitter')]")).isDisplayed()); //code to do something on new window
 
         driver.close(); // close newly opened window when done with it
-        driver.switchTo().window(parentHandle); // switch back to the original window
+        driver.switchTo().window(parentHandle3); // switch back to the original window
 
 
     }
@@ -111,7 +111,7 @@ public class verifyButtons extends Basic {
         //general.LoginPositive(config.login, config.password);
 
        // Store the current window handle
-        String winHandleBefore = driver.getWindowHandle();
+        String winHandleBefore4 = driver.getWindowHandle();
         // Perform the click operation that opens new window
         driver.findElement(By.xpath("//a[@class='btn btn-secondary facebook circle']")).click(); // click some link that opens a new window
         // Switch to new window opened
@@ -122,16 +122,17 @@ public class verifyButtons extends Basic {
         //WebDriverWait wait = new WebDriverWait(driver, 5);
         //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(.,'Facebook')]")));  // until this element is found
 
-        String acttitle =  driver.getTitle();
-        String exptitle = "Facebook";
-        Assert.assertEquals(acttitle, exptitle, "Passed");
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.titleContains("Facebook"));  // until this element is found
+
 
         // Perform the actions on new window
        // Assert.assertTrue(driver.findElement(By.xpath("//a[contains(.,'Facebook')]")).isDisplayed());
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-        driver.switchTo().window(winHandleBefore);
+        driver.switchTo().window(winHandleBefore4);
         // Continue with original browser (first window)
 
     }
@@ -142,7 +143,7 @@ public class verifyButtons extends Basic {
         //general.LoginPositive(config.login, config.password);
 
         // Store the current window handle
-        String winHandleBefore = driver.getWindowHandle();
+        String winHandleBefore5 = driver.getWindowHandle();
         // Perform the click operation that opens new window
         driver.findElement(By.xpath("//a[@class='btn btn-secondary twitter circle']")).click(); // click some link that opens a new window
         // Switch to new window opened
@@ -150,20 +151,20 @@ public class verifyButtons extends Basic {
             driver.switchTo().window(winHandle);
         }
 
-        Thread.sleep(30);
+        Thread.sleep(50);
        // WebDriverWait wait = new WebDriverWait(driver, 5);
        // wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@class='nav-logo-link']")));  // until this element is found
 
-        String acttitle =  driver.getTitle();
-        String exptitle = "Twitter / ?";
-        Assert.assertEquals(acttitle, exptitle, "Passed");
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.titleContains("Twitter / ?"));  // until this element is found
+
 
         // Perform the actions on new window
        // Assert.assertTrue(driver.findElement(By.xpath("//a[@class='nav-logo-link']")).isDisplayed());
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-        driver.switchTo().window(winHandleBefore);
+        driver.switchTo().window(winHandleBefore5);
         // Continue with original browser (first window)
 
     }
@@ -174,20 +175,24 @@ public class verifyButtons extends Basic {
         //general.LoginPositive(config.login, config.password);
 
         // Store the current window handle
-        String winHandleBefore = driver.getWindowHandle();
+        String winHandleBefore6 = driver.getWindowHandle();
         // Perform the click operation that opens new window
         driver.findElement(By.xpath("//a[@href='https://www.youtube.com/user/StarlightAus']")).click(); // click some link that opens a new window
         // Switch to new window opened
         for(String winHandle : driver.getWindowHandles()){
             driver.switchTo().window(winHandle);
         }
-        Thread.sleep(50);
+        Thread.sleep(70);
        // WebDriverWait wait = new WebDriverWait(driver, 5);
         //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class='logo masthead-logo-renderer-logo yt-sprite']")));  // until this element is found
 
-        String acttitle =  driver.getTitle();
-        String exptitle = "Starlight Children's Foundation - YouTube";
-        Assert.assertEquals(acttitle, exptitle, "Passed");
+
+         WebDriverWait wait = new WebDriverWait(driver, 15);
+         wait.until(ExpectedConditions.titleContains("Starlight Children's Foundation - YouTube"));  // until this element is found
+
+        // String acttitle =  driver.getTitle();
+       // String exptitle = "Starlight Children's Foundation - YouTube";
+        //Assert.assertEquals(acttitle, exptitle, "Passed");
 
 
         // Perform the actions on new window
@@ -195,7 +200,7 @@ public class verifyButtons extends Basic {
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-        driver.switchTo().window(winHandleBefore);
+        driver.switchTo().window(winHandleBefore6);
         // Continue with original browser (first window)
 
     }
@@ -207,7 +212,7 @@ public class verifyButtons extends Basic {
         //general.LoginPositive(config.login, config.password);
 
         // Store the current window handle
-        String winHandleBefore = driver.getWindowHandle();
+        String winHandleBefore7 = driver.getWindowHandle();
         // Perform the click operation that opens new window
         driver.findElement(By.xpath("//a[@href='https://www.facebook.com/StarlightAustralia']")).click(); // click some link that opens a new window
         // Switch to new window opened
@@ -218,16 +223,16 @@ public class verifyButtons extends Basic {
         //WebDriverWait wait = new WebDriverWait(driver, 5);
         //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(.,'Facebook')]")));  // until this element is found
 
-        String acttitle =  driver.getTitle();
-        String exptitle = "Starlight Children's Foundation Australia";
-        Assert.assertEquals(acttitle, exptitle, "Passed");
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.titleContains("Starlight Children's Foundation Australia"));  // until this element is found
+
 
         // Perform the actions on new window
         //Assert.assertTrue(driver.findElement(By.xpath("//a[contains(.,'Facebook')]")).isDisplayed());
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-        driver.switchTo().window(winHandleBefore);
+        driver.switchTo().window(winHandleBefore7);
         // Continue with original browser (first window)
 
     }
@@ -239,27 +244,27 @@ public class verifyButtons extends Basic {
         //general.LoginPositive(config.login, config.password);
 
         // Store the current window handle
-        String winHandleBefore = driver.getWindowHandle();
+        String winHandleBefore8 = driver.getWindowHandle();
         // Perform the click operation that opens new window
         driver.findElement(By.xpath("//a[@href='https://twitter.com/Starlight_star']")).click(); // click some link that opens a new window
         // Switch to new window opened
         for(String winHandle : driver.getWindowHandles()){
             driver.switchTo().window(winHandle);
         }
-        Thread.sleep(30);
+        Thread.sleep(50);
         //WebDriverWait wait = new WebDriverWait(driver, 5);
         //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class='Icon Icon--bird Icon--large']")));  // until this element is found
 
-        String acttitle =  driver.getTitle();
-        String exptitle = "Starlight Australia (@Starlight_star) | Twitter";
-        Assert.assertEquals(acttitle, exptitle, "Passed");
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.titleContains("Starlight Australia (@Starlight_star) | Twitter"));  // until this element is found
+
 
         // Perform the actions on new window
        // Assert.assertTrue(driver.findElement(By.xpath("//span[@class='Icon Icon--bird Icon--large']")).isDisplayed());
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-        driver.switchTo().window(winHandleBefore);
+        driver.switchTo().window(winHandleBefore8);
         // Continue with original browser (first window)
 
     }
@@ -272,7 +277,7 @@ public class verifyButtons extends Basic {
         //general.LoginPositive(config.login, config.password);
 
         // Store the current window handle
-        String winHandleBefore = driver.getWindowHandle();
+        String winHandleBefore9 = driver.getWindowHandle();
         // Perform the click operation that opens new window
         driver.findElement(By.xpath("//a[@href='http://instagram.com/starlightau']")).click(); // click some link that opens a new window
         // Switch to new window opened
@@ -280,11 +285,11 @@ public class verifyButtons extends Basic {
             driver.switchTo().window(winHandle);
         }
        // driver.switchTo().alert().dismiss();
-       Thread.sleep(30);
+       Thread.sleep(50);
 
-       String acttitle =  driver.getTitle();
-       String exptitle = "Starlight Australia (@starlightau) • Instagram photos and videos";
-       Assert.assertEquals(acttitle, exptitle, "Passed");
+       WebDriverWait wait = new WebDriverWait(driver, 25);
+       wait.until(ExpectedConditions.titleContains("Starlight Australia (@starlightau) • Instagram photos and videos"));  // until this element is found
+
 
        // WebDriverWait wait = new WebDriverWait(driver, 5);
         //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(.,'Instagram')]")));  // until this element is found
@@ -294,20 +299,23 @@ public class verifyButtons extends Basic {
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-        driver.switchTo().window(winHandleBefore);
+        driver.switchTo().window(winHandleBefore9);
         // Continue with original browser (first window)
 
     }
 
-   /* @Test(priority=11)
+  /*  @Test(priority=11)
     public void VerifyINSTcircle() throws Exception {
         // General general = new General(driver);
         // general.LoginPositive(config.login, config.password);
 
         // Store the current window handle
-        String winHandleBefore = driver.getWindowHandle();
+        String winHandleBefore10 = driver.getWindowHandle();
         // Perform the click operation that opens new window
         //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='https://www.instagram.com/tour_de_kids/']")));  // until this element is found
 
         driver.findElement(By.xpath("//a[@href='https://www.instagram.com/tour_de_kids/']")).click(); // click some link that opens a new window
 
@@ -318,7 +326,7 @@ public class verifyButtons extends Basic {
             driver.switchTo().window(winHandle);
 
         }
-        Thread.sleep(30);
+        Thread.sleep(50);
         //driver.switchTo().alert().dismiss();
         String acttitle =  driver.getTitle();
         String exptitle = "Tour de Kids (@tour_de_kids) • Instagram photos and videos";
@@ -334,9 +342,9 @@ public class verifyButtons extends Basic {
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-        driver.switchTo().window(winHandleBefore);
+        driver.switchTo().window(winHandleBefore10);
         // Continue with original browser (first window)
 
-    } */
+    }*/
 
 }
