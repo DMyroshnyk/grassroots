@@ -73,7 +73,7 @@ public class General extends Basic {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 Object a = js.executeScript("return document.readyState == 'complete'");
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

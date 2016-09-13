@@ -118,7 +118,7 @@ public class verifyButtons extends Basic {
         General general = new General(driver);
         SoftAssert softAssert = new SoftAssert();
         //general.LoginPositive(config.login, config.password);
-
+        Thread.sleep(5000);
        // Store the current window handle
         String winHandleBefore4 = driver.getWindowHandle();
         // Perform the click operation that opens new window
@@ -127,6 +127,7 @@ public class verifyButtons extends Basic {
         for(String winHandle : driver.getWindowHandles()){
             driver.switchTo().window(winHandle);
         }
+
         general.waitForAjax(driver);
 
         //WebDriverWait wait = new WebDriverWait(driver, 5);
@@ -151,7 +152,7 @@ public class verifyButtons extends Basic {
         General general = new General(driver);
         SoftAssert softAssert = new SoftAssert();
         //general.LoginPositive(config.login, config.password);
-
+        Thread.sleep(3000);
         // Store the current window handle
         String winHandleBefore5 = driver.getWindowHandle();
         // Perform the click operation that opens new window
@@ -162,46 +163,59 @@ public class verifyButtons extends Basic {
         }
 
         general.waitForAjax(driver);
+        Thread.sleep(5000);
 
         // Perform the actions on new window
-        softAssert.assertEquals(driver.getTitle(),"Twitter / ?");
+        softAssert.assertTrue(driver.getTitle().contains("Twitter"));
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-        softAssert.assertAll();
+       softAssert.assertAll();
         driver.switchTo().window(winHandleBefore5);
         // Continue with original browser (first window)
 
     }
 
     @Test(priority=7)
-    public void VerifyYTbottomcircle() throws Exception {
+    public void VerifyINSTcircle() throws Exception {
         General general = new General(driver);
         SoftAssert softAssert = new SoftAssert();
-        //general.LoginPositive(config.login, config.password);
+        // general.LoginPositive(config.login, config.password);
 
         // Store the current window handle
-        String winHandleBefore6 = driver.getWindowHandle();
+        String winHandleBefore10 = driver.getWindowHandle();
         // Perform the click operation that opens new window
-        driver.findElement(By.xpath("//a[@href='https://www.youtube.com/user/StarlightAus']")).click(); // click some link that opens a new window
-        // Switch to new window opened
-        for(String winHandle2 : driver.getWindowHandles()){
-            driver.switchTo().window(winHandle2);
-            //winHandle2.compareTo("https://www.youtube.com/user/StarlightAus");
-        }
 
         general.waitForAjax(driver);
+        Thread.sleep(5000);
+
+        // WebElement Tab = (new WebDriverWait(driver, config.LongWait)).until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='https://www.instagram.com/tour_de_kids/']")));
+        //Tab.click();
+
+        driver.findElement(By.xpath("//a[@href='https://www.instagram.com/tour_de_kids/']")).click(); // click some link that opens a new window
+
+
+        // Switch to new window opened
+        for(String winHandle : driver.getWindowHandles()){
+            driver.switchTo().window(winHandle);
+
+        }
+        general.waitForAjax(driver);
+        Thread.sleep(10000);
+
 
         // Perform the actions on new window
-        softAssert.assertEquals(driver.getTitle(),"Starlight Children's Foundation - YouTube");
+        softAssert.assertEquals(driver.getTitle(),"Tour de Kids (@tour_de_kids) • Instagram photos and videos");
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
         softAssert.assertAll();
-        driver.switchTo().window(winHandleBefore6);
+        driver.switchTo().window(winHandleBefore10);
         // Continue with original browser (first window)
 
     }
+
+
 
 
     @Test(priority=8)
@@ -209,7 +223,7 @@ public class verifyButtons extends Basic {
         General general = new General(driver);
         SoftAssert softAssert = new SoftAssert();
         //general.LoginPositive(config.login, config.password);
-
+        Thread.sleep(5000);
         // Store the current window handle
         String winHandleBefore7 = driver.getWindowHandle();
         // Perform the click operation that opens new window
@@ -218,7 +232,10 @@ public class verifyButtons extends Basic {
         for(String winHandle : driver.getWindowHandles()){
             driver.switchTo().window(winHandle);
         }
+
         general.waitForAjax(driver);
+
+        Thread.sleep(5000);
         //WebDriverWait wait = new WebDriverWait(driver, 5);
         //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(.,'Facebook')]")));  // until this element is found
 
@@ -227,13 +244,15 @@ public class verifyButtons extends Basic {
 
 
         // Perform the actions on new window
-        softAssert.assertTrue(driver.getTitle().contains("Starlight Children's Foundation Australia"));
+        softAssert.assertTrue(driver.getTitle().contains("Starlight"));
+
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-        softAssert.assertAll();
+ //       softAssert.assertAll();
         driver.switchTo().window(winHandleBefore7);
         // Continue with original browser (first window)
+
 
     }
 
@@ -243,7 +262,7 @@ public class verifyButtons extends Basic {
         General general = new General(driver);
         SoftAssert softAssert = new SoftAssert();
         //general.LoginPositive(config.login, config.password);
-
+        Thread.sleep(5000);
         // Store the current window handle
         String winHandleBefore8 = driver.getWindowHandle();
         // Perform the click operation that opens new window
@@ -253,6 +272,8 @@ public class verifyButtons extends Basic {
             driver.switchTo().window(winHandle);
         }
         general.waitForAjax(driver);
+
+        Thread.sleep(5000);
 
         // Perform the actions on new window
         softAssert.assertEquals(driver.getTitle(),"Starlight Australia (@Starlight_star) | Twitter");
@@ -272,7 +293,7 @@ public class verifyButtons extends Basic {
         General general = new General(driver);
        SoftAssert softAssert = new SoftAssert();
         //general.LoginPositive(config.login, config.password);
-
+       Thread.sleep(5000);
         // Store the current window handle
         String winHandleBefore9 = driver.getWindowHandle();
         // Perform the click operation that opens new window
@@ -284,6 +305,7 @@ public class verifyButtons extends Basic {
         }
 
        general.waitForAjax(driver);
+       Thread.sleep(5000);
 
         // Perform the actions on new window
        softAssert.assertEquals(driver.getTitle(),"Starlight Australia (@starlightau) • Instagram photos and videos");
@@ -296,39 +318,33 @@ public class verifyButtons extends Basic {
 
     }
 
-   @Test(priority=11)
-    public void VerifyINSTcircle() throws Exception {
-         General general = new General(driver);
-         SoftAssert softAssert = new SoftAssert();
-        // general.LoginPositive(config.login, config.password);
-
+    @Test(priority=11)
+    public void VerifyYTbottomcircle() throws Exception {
+        General general = new General(driver);
+        SoftAssert softAssert = new SoftAssert();
+        //general.LoginPositive(config.login, config.password);
+        Thread.sleep(5000);
         // Store the current window handle
-        String winHandleBefore10 = driver.getWindowHandle();
+        String winHandleBefore6 = driver.getWindowHandle();
         // Perform the click operation that opens new window
+        driver.findElement(By.xpath("//a[@href='https://www.youtube.com/user/StarlightAus']")).click(); // click some link that opens a new window
+        // Switch to new window opened
+        for(String winHandle2 : driver.getWindowHandles()){
+            driver.switchTo().window(winHandle2);
+            //winHandle2.compareTo("https://www.youtube.com/user/StarlightAus");
+        }
 
         general.waitForAjax(driver);
 
-       WebElement Tab = (new WebDriverWait(driver, config.LongWait)).until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='https://www.instagram.com/tour_de_kids/']")));
-       Tab.click();
-
-        //driver.findElement(By.xpath("//a[@href='https://www.instagram.com/tour_de_kids/']")).click(); // click some link that opens a new window
-
-
-        // Switch to new window opened
-        for(String winHandle : driver.getWindowHandles()){
-            driver.switchTo().window(winHandle);
-
-        }
-       general.waitForAjax(driver);
-
+        Thread.sleep(5000);
 
         // Perform the actions on new window
-       softAssert.assertEquals(driver.getTitle(),"Tour de Kids (@tour_de_kids) • Instagram photos and videos");
+        softAssert.assertEquals(driver.getTitle(),"Starlight Children's Foundation - YouTube");
         // Close the new window, if that window no more required
         driver.close();
         // Switch back to original browser (first window)
-       softAssert.assertAll();
-        driver.switchTo().window(winHandleBefore10);
+        softAssert.assertAll();
+        driver.switchTo().window(winHandleBefore6);
         // Continue with original browser (first window)
 
     }
