@@ -67,6 +67,19 @@ public class General extends Basic {
 
     } */
 
-
+    public static void waitForAjax(WebDriver driver) throws InterruptedException {
+        new WebDriverWait(driver, 180).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                Object a = js.executeScript("return document.readyState == 'complete'");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return (Boolean) a;
+            }
+        });
+    }
 
 }

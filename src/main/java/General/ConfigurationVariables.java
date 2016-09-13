@@ -12,4 +12,5 @@ public class ConfigurationVariables {
     public String firstname = "SeleniumFN";
     public String lasttname = "SeleniumLN";
     public String email = "dmit+" + Math.floor(Math.random()*11111) + "@lackmail.ru";
+    public int LongWait = 60;
 }
