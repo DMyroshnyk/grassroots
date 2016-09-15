@@ -11,10 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 import java.util.concurrent.TimeUnit;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.stalenessOf;
 
 /**
  * Created by Dmitriy on 9/9/2016.
@@ -27,12 +25,14 @@ public class verifyButtons extends Basic {
     public void SwitchOnLogging() throws Exception {
         General general = new General(driver);
         general.LoginPositive(config.login, config.password);
+        //general.logOut();
 
     }
 
 
     @Test(priority=2)
     public void VerifyFBButtonLogged() throws Exception {
+
         General general = new General(driver);
         SoftAssert softAssert = new SoftAssert();
         //general.LoginPositive(config.login, config.password);
@@ -346,6 +346,24 @@ public class verifyButtons extends Basic {
         softAssert.assertAll();
         driver.switchTo().window(winHandleBefore6);
         // Continue with original browser (first window)
+
+        general.waitForAjax(driver);
+
+    }
+
+    @Test(priority=12)
+    public void btnslogout () throws Exception {
+
+        General general = new General(driver);
+        driver.navigate().refresh();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        //Logout before next tests
+        general.logOut();
+
+        general.waitForAjax(driver);
+        driver.navigate().refresh();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 

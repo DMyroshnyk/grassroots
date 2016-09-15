@@ -45,7 +45,7 @@ public class Basic {
     @AfterSuite()
     public void browserDown () throws Exception {
 
-       //driver.quit();
+       driver.quit();
 
     }
 

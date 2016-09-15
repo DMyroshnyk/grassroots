@@ -2,10 +2,11 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite thread-count="1" name="Suite" >
+<suite name="Suite" >
     <test name="Test_1">
         <classes>
             <class name="Tests.verifyButtons"/>
+            <class name="Tests.verifyJoinus"/>
         </classes>
     </test>
     </suite>
